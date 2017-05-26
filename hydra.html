@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fifty Headed Hydra</title>
+<link rel="stylesheet" type="text/css" href="hydra.css" media="screen" />
+<script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script  type="text/javascript" src="hydra.js"></script>
+</head>
+<body>
+
+<h1>The Fifty Headed Hydra</h1>
+<p>Can you write 500 words in 5 minutes?</p>
+<h2>Fifty headed what?</h2>
+
+<p>The Fifty Headed Hydra is a popular <a href="http://nanowrimo.org/">NaNoWriMo</a> challenge. The definition below is taken from <a href="http://www.wikiwrimo.org/wiki/Word_war">WikiWriMo</a>:</p>
+
+<blockquote>Fifty Headed Hydra: write 500 words in 5 minutes. Named for a writing sprint during a Virtual write-in in which one of the NaNo interns wrote 500 words and the only words spelled correctly were "fifty headed hydra".</blockquote>
+
+<form id='sound'>
+  Sound:<br>
+    <input type="radio" name="sound" id='soundon'value="on" checked> On<br>
+  <input type="radio" name="sound" value="off"> Off<br>
+</form>
+
+<button id='start'>Go!</button>
+<div id="timer">
+</div>
+
+<textarea id="livetext" rows=10 cols=90>
+</textarea>
+<div class="counter" id='livecount'>
+  0
+</div>
+<div id='finaltext'>
+</div>
+
+<p class="small">This is a quick and dirty experiment. I'm not responsible for lost words or things that end up on fire. Keep a safe backup of your work!</p>
+
+
+</body>
+</html>
