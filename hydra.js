@@ -15,9 +15,27 @@ function getWordCount(input) {
 }
 
 $(document).ready(function() {
-  
+
+  var storeWords = false;
+
   //disable text box until button clicked
   $('#livetext').prop('disabled', true);
+
+  //TODO restore any stored words
+  if (localStorage.hasOwnProperty("_hydraText")) {
+    if (
+      confirm(
+        "Your browser's local storage contains existing text you typed in on a previous visit to this page. If you would like to restore this text, click OK (this will not restart the timer). Otherwise, click Cancel to delete this text and turn off local storage for this page."
+      )
+    ) {
+      storeWords = true;
+      $('#livetext').val(localStorage._hydraText);
+      $('#livetext').prop('disabled', false);
+    } else {
+      storeWords = false;
+      localStorage.removeItem("_hydraText");
+    }
+  }
 
   //user starts a session
   $('#start').click(function() {
@@ -85,6 +103,40 @@ $(document).ready(function() {
     }
   });
 
+  //turn storage on/off
+  $('input[name="storage"]:radio').change(function() {
+    if ($("#storeon").is(":checked") && !storeWords) {
+      $("#overlay").show();
+      $("#storagebox").show();
+    } else {
+      if (storeWords) {
+        if (confirm("This will remove any words stored by your browser. If you leave this page without copy-pasting them somewhere safe, you will not be able to get them back! Do you want to proceed?")) {
+          storeWords = false;
+          localStorage.removeItem("_hydraText");
+        }
+      }
+    }
+  });
+
+  //accept storage
+  $("#storeok").click(function() {
+    $("#overlay").hide();
+    $("#storagebox").hide();
+    storeWords = true;
+    localStorage.setItem("_hydraText", '');
+  });
+
+  //cancel storage
+  $("#storecancel").click(function() {
+    $("#overlay").hide();
+    $("#storagebox").hide();
+    storeWords = false;
+    //set off to checked
+    $("#storeon").prop("checked", false);
+    $("#storeoff").prop("checked", true);
+    localStorage.removeItem("_hydraText");
+  });
+
   //converts second count to a mm:ss string for display
   function convertMinutes(timer) {
     var mins = String(Math.floor(timer / 60));
@@ -103,8 +155,11 @@ $(document).ready(function() {
     var input = $('#livetext').val();
     var wc = getWordCount(input);
     //update counter
-    $('#livecount').empty();
-    $('#livecount').append(wc);
+    $('#livecount').empty().append(wc);
+    //save words if enabled
+    if (storeWords) {
+      localStorage.setItem("_hydraText", input);
+    }
   });
 
 });

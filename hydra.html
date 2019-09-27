@@ -8,34 +8,49 @@
 </head>
 <body>
 
-<h1>The Fifty Headed Hydra</h1>
-<p>Can you write 500 words in 5 minutes?</p>
-<h2>Fifty headed what?</h2>
+  <div id="overlay"></div>
 
-<p>The Fifty Headed Hydra is a popular <a href="http://nanowrimo.org/">NaNoWriMo</a> challenge. The definition below is taken from <a href="http://www.wikiwrimo.org/wiki/Word_war">WikiWriMo</a>:</p>
+  <div id="storagebox" class="modal">
+      <p>Switching this on will use your browser's <a href="https://en.wikipedia.org/wiki/Web_storage">local storage</a> to store your progress and written words as you type for safekeeping in case you accidentally close or navigate away from the page. Your writing is only stored in your browser, on your machine, and does not leave it - I have no access to what you wrote and nor does the website this page is hosted on. It is not shared with any other sites in any way, and they can't access your words either.</p>
+      <p>Remember this is not a substitute for copy-pasting your words in another document - always remember to do that when you're done.</p>
+      <p>If you'd like to enable local storage, click OK, else click Cancel. To clear local storage later, switch this setting to Off.</p>
+      <button id="storeok">OK</button>
+      <button id="storecancel">Cancel</button>
+    </div>
 
-<blockquote>Fifty Headed Hydra: write 500 words in 5 minutes. Named for a writing sprint during a Virtual write-in in which one of the NaNo interns wrote 500 words and the only words spelled correctly were "fifty headed hydra".</blockquote>
+  <h1>The Fifty Headed Hydra</h1>
+  <p>Can you write 500 words in 5 minutes?</p>
+  <h2>Fifty headed what?</h2>
 
-<form id='sound'>
-  Sound:<br>
-    <input type="radio" name="sound" id='soundon'value="on" checked> On<br>
-  <input type="radio" name="sound" value="off"> Off<br>
-</form>
+  <p>The Fifty Headed Hydra is a popular <a href="http://nanowrimo.org/">NaNoWriMo</a> challenge. The definition below is taken from <a href="http://www.wikiwrimo.org/wiki/Word_war">WikiWriMo</a>:</p>
 
-<button id='start'>Go!</button>
-<div id="timer">
-</div>
+  <blockquote>Fifty Headed Hydra: write 500 words in 5 minutes. Named for a writing sprint during a Virtual write-in in which one of the NaNo interns wrote 500 words and the only words spelled correctly were "fifty headed hydra".</blockquote>
 
-<textarea id="livetext" rows=10 cols=90>
-</textarea>
-<div class="counter" id='livecount'>
-  0
-</div>
-<div id='finaltext'>
-</div>
+  <form id="storage" class="center">
+      Save words to local storage:<br />
+      <input type="radio" name="storage" id="storeon" value="on"> On<br>
+      <input type="radio" name="storage" id="storeoff" value="off" checked> Off<br>
+    </form>
 
-<p class="small">This is a quick and dirty experiment. I'm not responsible for lost words or things that end up on fire. Keep a safe backup of your work!</p>
+  <form id='sound'>
+    Sound:<br>
+      <input type="radio" name="sound" id='soundon'value="on" checked> On<br>
+    <input type="radio" name="sound" value="off"> Off<br>
+  </form>
 
+  <button id='start'>Go!</button>
+  <div id="timer">
+  </div>
+
+  <textarea id="livetext" rows=10 cols=90>
+  </textarea>
+  <div class="counter" id='livecount'>
+    0
+  </div>
+  <div id='finaltext'>
+  </div>
+
+  <p class="small">This is a quick and dirty experiment. I'm not responsible for lost words or things that end up on fire. Keep a safe backup of your work!</p>
 
 </body>
 </html>
